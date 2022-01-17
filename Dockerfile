@@ -1,4 +1,5 @@
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
-ADD target/eterrain-app.jar
-ENTRYPOINT ["java","-jar","/eterrain-app.jar"]
+ARG JAR_FILE=target/eterrain-app.jar
+ADD ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
