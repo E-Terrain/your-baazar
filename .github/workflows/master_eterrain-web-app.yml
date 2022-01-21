@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_4ff958f583b24487bbf59b6d4f2bd250 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_3231d57845a24b63a612ce97c961ad75 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_7774e8d379da47179de036a5de81a32e }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d6cf4a3d62154812ace8e57965b3cad1 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4ff958f583b24487bbf59b6d4f2bd250 }}/anuj557/eterrain:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7774e8d379da47179de036a5de81a32e }}/anuj557/eterrain:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'eterrain-web-app'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e7485d006ec4428ead1f657577021aa0 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_4ff958f583b24487bbf59b6d4f2bd250 }}/anuj557/eterrain:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_083614afd8704e2aba027acac84cf1b4 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_7774e8d379da47179de036a5de81a32e }}/anuj557/eterrain:${{ github.sha }}'
