@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileController {
     @RequestMapping("/getprofile")
     public String getProfile(){
-        return "spring boot initial commit !!! CICD test";
+        return "spring boot initial commit !!! CICD test success";
     }
 }
