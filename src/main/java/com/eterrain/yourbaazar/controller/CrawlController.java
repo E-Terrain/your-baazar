@@ -4,7 +4,6 @@ import com.eterrain.yourbaazar.downloader.PageDownloader;
 import com.eterrain.yourbaazar.extractor.UrlExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashSet;
@@ -18,10 +17,11 @@ public class CrawlController {
     UrlExtractor urlExtractor;
 
     @RequestMapping("/crawl")
-    public String getDocuments(){String text="https://www.google.com/";
+    public String getDocuments(){
+        String seedUrl="https://www.tutorialspoint.com/";
         Set<String> set= new HashSet<>();
-      //  urlDownloader.downloadPage();
-        return urlExtractor.fetchUrl(text,set).toString();
-        //return "spring boot initial commit !!";
+         urlExtractor.fetchUrl(seedUrl,set,2);
+         System.out.println("set size:"+set.size());
+         return set.toString();
     }
 }
