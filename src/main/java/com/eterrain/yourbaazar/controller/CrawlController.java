@@ -20,7 +20,7 @@ public class CrawlController {
     public String getDocuments(){
         String seedUrl="https://www.tutorialspoint.com/";
         Set<String> set= new HashSet<>();
-         urlExtractor.fetchUrl(seedUrl,set,2);
+         urlExtractor.fetchUrl("add",seedUrl,set,2);
          System.out.println("set size:"+set.size());
          return set.toString();
     }
