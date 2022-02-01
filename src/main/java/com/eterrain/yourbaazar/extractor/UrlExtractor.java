@@ -16,10 +16,10 @@ import java.util.Set;
 @Component
 public class UrlExtractor {
     public static void fetchUrl(String parentUrl, Set<String> set,int depth) {
-       if(!set.contains(parentUrl)) {
+       if(!set.contains(parentUrl) && parentUrl.contains("http")) {
            set.add(parentUrl);
            if (parentUrl == null || depth > 2 || set.size() >= 50) {
-               System.out.println("url :" + set);
+              return;
            }else {
                Document doc = null;
                try {
@@ -39,6 +39,7 @@ public class UrlExtractor {
         String seedUrl="https://www.tutorialspoint.com/";
         Set<String> set= new HashSet<>();
         fetchUrl(seedUrl,set,0);
+        System.out.println("set :" + set);
         System.out.println("size :" + set.size());
     }
 
