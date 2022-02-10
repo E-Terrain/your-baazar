@@ -14,15 +14,14 @@ import java.util.Set;
 public class UrlExtractor {
     public static void fetchUrl(String pattern, String parentUrl, Set<String> set,int depth) {
        if(!set.contains(parentUrl) && parentUrl.contains("http")) {
+           set.add(parentUrl);
+
            if (parentUrl == null || depth > 2 || set.size() >= 50) {
               return;
            }else {
                Document doc = null;
                try {
                    doc = Jsoup.connect(parentUrl).get();
-                   if(doc.toString().contains(pattern)){
-                       set.add(parentUrl);
-                   }
                } catch (IOException e) {
                    e.printStackTrace();
                }
